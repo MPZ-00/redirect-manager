@@ -1,4 +1,3 @@
-
 //          Copyright Martin Prätzlich 2023 - 2023.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
@@ -22,7 +21,7 @@ const logger = (req, res, next) => {
 
 app.use(logger)
 app.use(express.json())
-app.use(express.static(__dirname + '/app'))
+app.use(express.static('app'))
 
 const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization
@@ -32,6 +31,22 @@ const authenticate = (req, res, next) => {
     }
     next()
 }
+
+function serveFile(req, res, fileName) {
+    res.sendFile(`${__dirname}/${fileName}`)
+}
+
+app.get('/index.html', (req, res) => {
+    serveFile(req, res, 'index.html')
+})
+
+app.get('/script.js', (req, res) => {
+    serveFile(req, res, 'script.js')
+})
+
+app.get('/style.css', (req, res) => {
+    serveFile(req, res, 'style.css')
+})
 
 app.post('/entry/', authenticate, (req, res) => {
     const newEntry = req.body
@@ -60,15 +75,15 @@ app.post('/entry/', authenticate, (req, res) => {
 
 app.get('/entries', (req, res) => {
     const data = JSON.parse(fs.readFileSync('./data.json'))
-    
+
     // Umwandeln des data-Objekts in ein Array von Objekten
     const entries = Object.keys(data).map(slug => {
         return {
             slug: slug,
             url: data[slug]
         }
-    });
-    
+    })
+
     res.json(entries)
 })
 

@@ -40,8 +40,21 @@ body {
     margin: 40px auto;
     width: 80%;
     border-radius: 15px;
-    background-color: #41295a;  /* slightly lighter magenta */
+    background-color: var(--background-color);
     padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--text-color);
 }
 
 button {
@@ -57,7 +70,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+button:hover {
     background-color: var(--button-hover-background-color);
 }
 
@@ -77,6 +90,10 @@ hr {
 
 h1 {
     font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
 }
 
 h3 {
