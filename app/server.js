@@ -58,17 +58,30 @@ app.post('/entry/', authenticate, (req, res) => {
     res.status(201).send(`${req.protocol}://${req.hostname}/${newEntry.slug}`)
 })
 
+app.get('/entries', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./data.json'))
+    
+    // Umwandeln des data-Objekts in ein Array von Objekten
+    const entries = Object.keys(data).map(slug => {
+        return {
+            slug: slug,
+            url: data[slug]
+        }
+    });
+    
+    res.json(entries)
+})
+
 app.get('/:slug', (req, res) => {
     const data = JSON.parse(fs.readFileSync(`./data.json`))
     const slug = req.params.slug
-    const entry = data.find(entry => entry.slug === slug)
 
-    if (!entry) {
+    if (!data[slug]) {
         res.status(404).send('Entry not found')
         return
     }
 
-    res.redirect(entry.url)
+    res.redirect(data[slug])
 })
 
 app.delete('/entry/:slug', authenticate, (req, res) => {
@@ -84,12 +97,6 @@ app.delete('/entry/:slug', authenticate, (req, res) => {
     fs.writeFileSync('./data.json', JSON.stringify(data))
     res.status(204).send()
 })
-
-app.get('/entries', (req, res) => {
-    const data = JSON.parse(fs.readFileSync('./app/data.json'))
-    res.json(data)
-})
-
 
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`)
