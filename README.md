@@ -21,13 +21,25 @@ Die Anwendung ermöglicht es Ihnen, Benutzerprofile zu erstellen, zu bearbeiten 
 2. Navigieren Sie in das Projektverzeichnis:
 
     ```
-    cd redirect-manager
+    cd redirect-manager/app
     ```
 
 3. Starten Sie die Anwendung:
 
     ```
-    docker-compose up
+    node server.js
+    ```
+
+#### Über Docker-Hub
+
+1. Pull
+   ```
+   docker pull mpz00/redirect-manager:latest
+   ```
+   
+2. Starten
+   ```
+    docker run -d --name redirect-manager -p 3000:3000 -v /docker/redirectData.json:/usr/src/app/data.json redirect-manager
     ```
 
 Die Anwendung sollte nun unter `http://localhost:3000` laufen. Sie können auch auf die Mongo-Express-Web-Oberfläche unter `http://localhost:8081` zugreifen.
