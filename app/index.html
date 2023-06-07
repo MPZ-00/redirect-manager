@@ -22,14 +22,60 @@
 <body data-theme="dark">
     <header class="container">
         <h1>Redirect Manager</h1>
-        <aside>
-            <button id="toggleTheme" onclick="toggleTheme()">Toggle Theme</button>
-        </aside>
+        <button id="toggleTheme" onclick="toggleTheme()">Toggle Theme</button>
     </header>
     <main>
         <section>
-            <h2>Anleitung</h2>
-            <p>Hier ist eine einfache Anleitung zur Benutzung des Redirect Managers...</p>
+            <h1>Anleitung für den Redirect Manager</h1>
+            <button class="toggle-button" onclick="toggleInstructions()">Anleitung ein-/ausblenden</button>
+
+            <div id="instructions" class="instructions">
+                <h2>Schritt 1: URL hinzufügen</h2>
+                <ol>
+                    <li>Öffnen Sie den Redirect Manager in Ihrem Webbrowser.</li>
+                    <li>Navigieren Sie zum Abschnitt "Einträge hinzufügen".</li>
+                    <li>Geben Sie den gewünschten Slug und die entsprechende URL in die entsprechenden Eingabefelder
+                        ein.</li>
+                    <li>Klicken Sie auf die Schaltfläche "Submit".</li>
+                </ol>
+
+                <h2>Schritt 2: URL aufrufen</h2>
+                <ol>
+                    <li>Öffnen Sie Ihren Webbrowser.</li>
+                    <li>Geben Sie die Haupt-URL des Redirect Managers gefolgt vom gewünschten Slug in die Adressleiste
+                        ein.
+                        Beispiel: <code>https://redirectmanager.com/:slug</code> (ersetzen Sie <code>:slug</code> durch
+                        den gewünschten Slug).</li>
+                    <li>Drücken Sie die Eingabetaste oder klicken Sie auf "Los".</li>
+                    <li>Sie werden automatisch zur entsprechenden URL weitergeleitet.</li>
+                </ol>
+
+                <h2>Schritt 3: Alle Einträge anzeigen (nur mit Authentifizierung)</h2>
+                <ol>
+                    <li>Authentifizieren Sie sich als Administrator oder mit den erforderlichen Zugangsdaten.</li>
+                    <li>Navigieren Sie zum Endpunkt "/entries".</li>
+                    <li>Die Liste aller Einträge wird angezeigt, einschließlich des Slugs und der entsprechenden URLs.
+                    </li>
+                </ol>
+
+                <h2>Schritt 4: Eintrag löschen</h2>
+                <ol>
+                    <li>Authentifizieren Sie sich als Administrator oder mit den erforderlichen Zugangsdaten.</li>
+                    <li>Navigieren Sie zum Endpunkt "/entry/:slug" (ersetzen Sie <code>:slug</code> durch den zu
+                        löschenden Slug).</li>
+                    <li>Der Eintrag mit dem angegebenen Slug wird aus der Liste entfernt und die URL ist nicht mehr
+                        verfügbar.</li>
+                </ol>
+
+                <h2>Schritt 5: Automatisches Generieren eines Slugs (optional)</h2>
+                <p>Wenn Sie beim Hinzufügen einer URL keinen spezifischen Slug angeben, wird automatisch ein zufälliger
+                    Slug generiert. Der generierte Slug wird zusammen mit der URL gespeichert und kann für den Zugriff
+                    auf die URL verwendet werden.</p>
+
+                <p>Bitte beachten Sie, dass für bestimmte Endpunkte eine Authentifizierung erforderlich ist, um die
+                    Aktionen auszuführen. Stellen Sie sicher, dass Sie über die entsprechenden Berechtigungen verfügen,
+                    um auf diese Endpunkte zugreifen zu können.</p>
+            </div>
         </section>
 
         <section class="container">
@@ -37,7 +83,7 @@
             <hr>
             <form id="entry-form">
                 <label for="slug">Slug:</label>
-                <input type="text" name="slug" id="slug" placeholder="Slug" required>
+                <input type="text" name="slug" id="slug" placeholder="Slug">
                 <label for="url">URL:</label>
                 <input type="url" name="url" id="url" placeholder="URL" required>
                 <hr>

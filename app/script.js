@@ -40,3 +40,8 @@ document.getElementById('entry-form').addEventListener('submit', function (event
             console.error('Error:', error)
         })
 })
+
+function toggleInstructions() {
+    let instructions = document.getElementById("instructions");
+    instructions.style.display = instructions.style.display === "none" ? "block" : "none";
+}

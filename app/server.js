@@ -36,7 +36,7 @@ function serveFile(req, res, fileName) {
     res.sendFile(`${__dirname}/${fileName}`)
 }
 
-app.get('/index.html', (req, res) => {
+app.get('/', (req, res) => {
     serveFile(req, res, 'index.html')
 })
 
