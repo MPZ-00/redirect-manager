@@ -26,7 +26,7 @@
     </header>
     <main>
         <section>
-            <h1>Anleitung für den Redirect Manager</h1>
+            <h1>Anleitung</h1>
             <button class="toggle-button" onclick="toggleInstructions()">Anleitung ein-/ausblenden</button>
 
             <div id="instructions" class="instructions">
@@ -44,7 +44,7 @@
                     <li>Öffnen Sie Ihren Webbrowser.</li>
                     <li>Geben Sie die Haupt-URL des Redirect Managers gefolgt vom gewünschten Slug in die Adressleiste
                         ein.
-                        Beispiel: <code>https://redirectmanager.com/:slug</code> (ersetzen Sie <code>:slug</code> durch
+                        Beispiel: <code>https://localhost:3000/:slug</code> (ersetzen Sie <code>:slug</code> durch
                         den gewünschten Slug).</li>
                     <li>Drücken Sie die Eingabetaste oder klicken Sie auf "Los".</li>
                     <li>Sie werden automatisch zur entsprechenden URL weitergeleitet.</li>
@@ -79,16 +79,25 @@
         </section>
 
         <section class="container">
-            <h2>Einträge hinzufügen</h2>
             <hr>
+            <h2>Einträge hinzufügen</h2>
             <form id="entry-form">
                 <label for="slug">Slug:</label>
                 <input type="text" name="slug" id="slug" placeholder="Slug">
                 <label for="url">URL:</label>
                 <input type="url" name="url" id="url" placeholder="URL" required>
-                <hr>
+                <label for="password">Authentifizieren:</label>
+                <input type="password" name="auth" id="auth-token" placeholder="YOUR_AUTH_TOKEN" required>
+                <br>
                 <button type="submit">Submit</button>
             </form>
+        </section>
+
+        <section class="container">
+            <hr>
+            <h2>Einträge anzeigen</h2>
+            <button id="update-entries" onclick="showAndUpdateEntries()">Show/Update Entries</button>
+            <ul id="entries-list"></ul>
         </section>
     </main>
 

@@ -7,7 +7,7 @@ const express = require('express')
 const fs = require('fs')
 
 const PORT = process.env.PORT || 3000
-const BEARER_TOKEN = process.env.BEARER_TOKEN || `unsEcUrE-ToKeN123`
+const BEARER_TOKEN = process.env.BEARER_TOKEN || `sEcUrE-ToKeN123`
 
 const app = express()
 

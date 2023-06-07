@@ -18,20 +18,22 @@ function toggleTheme() {
     rootStyles.setProperty("--button-hover-background-color", "var(--button-hover-background-color-" + themes[currentTheme] + ")")
 }
 
-document.getElementById('entry-form').addEventListener('submit', function (event) {
+document.getElementById('entry-form').addEventListener('submit', async function (event) {
     event.preventDefault()
 
     var slug = document.getElementById('slug').value
     var url = document.getElementById('url').value
+    var authToken = document.getElementById('auth-token').value
 
-    fetch('/entry', {
+    await fetch('/entry', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + authToken // Authentifizierungstoken als Bearer-Token hinzufügen
             },
             body: JSON.stringify({
                 slug: slug,
-                url: url,
+                url: url
             }),
         })
         .then(response => response.json())
@@ -42,6 +44,30 @@ document.getElementById('entry-form').addEventListener('submit', function (event
 })
 
 function toggleInstructions() {
-    let instructions = document.getElementById("instructions");
-    instructions.style.display = instructions.style.display === "none" ? "block" : "none";
+    let instructions = document.getElementById("instructions")
+    instructions.style.display = instructions.style.display === "none" ? "block" : "none"
+}
+
+function showAndUpdateEntries() {
+    fetch('/entries', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Einträge in die Liste einfügen
+            var entriesList = document.getElementById('entries-list')
+            entriesList.innerHTML = '' // Vorhandene Einträge löschen
+
+            data.forEach(entry => {
+                var listItem = document.createElement('li')
+                listItem.textContent = entry.slug + ': ' + entry.url
+                entriesList.appendChild(listItem)
+            })
+        })
+        .catch(error => {
+            console.error('Error:', error)
+        })
 }
