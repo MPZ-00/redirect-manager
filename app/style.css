@@ -1,0 +1,85 @@
+:root {
+    --text-color-dark: #FFFFFF;
+    --background-color-dark: #37306B;
+    --button-background-color-dark: #9E4784;
+    --button-text-color-dark: #FFFFFF;
+    --button-hover-background-color-dark: #D27685;
+
+    --text-color-light: #000000;
+    --background-color-light: #FBFFDC;
+    --button-background-color-light: #98EECC;
+    --button-text-color-light: #000000;
+    --button-hover-background-color-light: #79E0EE;
+
+    --text-color-vintage: #FFFFFF;
+    --background-color-vintage: #89375C;
+    --button-background-color-vintage: #BACDDB;
+    --button-text-color-vintage: #000000;
+    --button-hover-background-color-vintage: #CE5959;
+
+    --text-color-summer: #000000;
+    --background-color-summer: #FFB84C;
+    --button-background-color-summer: #A459D1;
+    --button-text-color-summer: #FFFFFF;
+    --button-hover-background-color-summer: #F266AB;
+
+    --text-color: var(--text-color-dark);
+    --background-color: var(--background-color-dark);
+    --button-background-color: var(--button-background-color-dark);
+    --button-text-color: var(--button-text-color-dark);
+    --button-hover-background-color: var(--button-hover-background-color-dark);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    font-size: 16px;
+}
+
+.container {
+    margin: 40px auto;
+    width: 80%;
+    border-radius: 15px;
+    background-color: #41295a;  /* slightly lighter magenta */
+    padding: 20px;
+}
+
+button {
+    width: 160px;
+    height: 45px;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+img {
+    width: 328px;
+    height: 287px;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+hr {
+    width: 400px;
+    margin-left: 0;
+    border-color: var(--text-color);
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h3 {
+    display: inline-block;
+    font-size: 20px;
+}
