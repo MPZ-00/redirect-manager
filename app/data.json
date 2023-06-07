@@ -2,5 +2,13 @@
     {
         "slug": "rwu",
         "url": "https://rwu.de"
+    },
+    {
+        "slug": "elearning",
+        "url": "https://elearning.rwu.de"
+    },
+    {
+        "slug": "webprog",
+        "url": "https://elearning.rwu.de/course/view.php?id=2236"
     }
 ]
