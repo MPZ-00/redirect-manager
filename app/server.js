@@ -1,3 +1,9 @@
+
+//          Copyright Martin Prätzlich 2023 - 2023.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          https://www.boost.org/LICENSE_1_0.txt)
+
 const express = require('express')
 const fs = require('fs')
 
@@ -6,7 +12,7 @@ const BEARER_TOKEN = process.env.BEARER_TOKEN || `unsEcUrE-ToKeN123`
 
 const app = express()
 
-const logger = (req, next) => {
+const logger = (req, res, next) => {
     const method = req.method
     const url = req.url
     const time = new Date().toISOString()
@@ -14,7 +20,7 @@ const logger = (req, next) => {
     next()
 }
 
-//app.use(logger)
+app.use(logger)
 app.use(express.json())
 app.use(express.static(__dirname + '/app'))
 
@@ -41,15 +47,15 @@ app.post('/entry/', authenticate, (req, res) => {
 
     const data = JSON.parse(fs.readFileSync(`./data.json`))
 
-    if (data[slug]) {
+    if (data[newEntry.slug]) {
         res.status(409).send('Slug already exists')
         return
     }
 
-    data[slug] = newEntry.url
+    data[newEntry.slug] = newEntry.url
 
     fs.writeFileSync('./data.json', JSON.stringify(data))
-    res.status(201).send(`${req.protocol}://${req.hostname}/${slug}`)
+    res.status(201).send(`${req.protocol}://${req.hostname}/${newEntry.slug}`)
 })
 
 app.get('/:slug', (req, res) => {
