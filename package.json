@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Martin Prätzlich",
-  "license": "ISC",
+  "license": "Boost Software License 1.0",
   "dependencies": {
     "express": "^4.18.2"
   }
