@@ -1,10 +1,11 @@
-const express = require('express');
-const fs = require('fs');
+const express = require('express')
+const fs = require('fs')
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000
 const BEARER_TOKEN = process.env.BEARER_TOKEN || `unsEcUrE-ToKeN123`
 
-const app = express();
+const app = express()
+
 const logger = (req, next) => {
     const method = req.method
     const url = req.url
@@ -13,9 +14,9 @@ const logger = (req, next) => {
     next()
 }
 
-app.use(logger)
+//app.use(logger)
 app.use(express.json())
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/app'))
 
 const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization
@@ -76,6 +77,11 @@ app.delete('/entry/:slug', authenticate, (req, res) => {
     delete data[slug]
     fs.writeFileSync('./data.json', JSON.stringify(data))
     res.status(204).send()
+})
+
+app.get('/entries', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./app/data.json'))
+    res.json(data)
 })
 
 
