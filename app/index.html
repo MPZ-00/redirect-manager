@@ -9,6 +9,7 @@
 
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,25 +18,32 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body data-theme="dark">
-    <header>
+    <header class="container">
         <h1>Redirect Manager</h1>
+        <aside>
+            <button id="toggleTheme" onclick="toggleTheme()">Toggle Theme</button>
+        </aside>
     </header>
     <main>
-        <h2>Anleitung</h2>
-        <p>Hier ist eine einfache Anleitung zur Benutzung des Redirect Managers...</p>
+        <section>
+            <h2>Anleitung</h2>
+            <p>Hier ist eine einfache Anleitung zur Benutzung des Redirect Managers...</p>
+        </section>
 
-        <form id="entry-fomr">
-            <label for="slug">Slug:</label>
-            <input type="text" name="slug" id="slug" placeholder="Slug" required>
-
-            <label for="url">URL:</label>
-            <input type="url" name="url" id="url" placeholder="URL" required>
-
-            <button type="submit">Submit</button>
-        </form>
+        <section class="container">
+            <h2>Einträge hinzufügen</h2>
+            <hr>
+            <form id="entry-form">
+                <label for="slug">Slug:</label>
+                <input type="text" name="slug" id="slug" placeholder="Slug" required>
+                <label for="url">URL:</label>
+                <input type="url" name="url" id="url" placeholder="URL" required>
+                <hr>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
     </main>
-    <aside>
-        <button id="toggleTheme" onclick="toggleTheme()">Toggle Theme</button>
-    </aside>
+
 </html>
