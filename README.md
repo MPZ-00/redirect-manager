@@ -60,6 +60,6 @@ Dieses Projekt ist unter der ISC-Lizenz lizenziert. Weitere Details finden Sie i
 
 ## Kontakt
 
-Martin Prätzlich - [Github](https://github.com/MPZ-00)
+Discord Server - Bits & Bytes <p align="left"> <a href="https://discord.com/invite/DXWuZUBW2C" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" width="64" height="64" /></a></p>
 
 Projekt-Link: https://github.com/MPZ-00/redirect-manager
